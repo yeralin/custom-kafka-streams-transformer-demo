@@ -1,0 +1,22 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.5.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'custom.processor'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.1.5.RELEASE'
+	implementation 'org.springframework.kafka:spring-kafka:2.2.6.RELEASE'
+	implementation 'org.springframework.cloud:spring-cloud-stream:2.1.2.RELEASE'
+	implementation 'org.springframework.cloud:spring-cloud-stream-binder-kafka:2.1.2.RELEASE'
+	implementation 'org.springframework.cloud:spring-cloud-stream-binder-kafka-streams:2.1.2.RELEASE'
+}
