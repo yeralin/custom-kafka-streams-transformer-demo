@@ -8,6 +8,7 @@ import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.Transformer;
 import org.apache.kafka.streams.processor.ProcessorContext;
+import org.apache.kafka.streams.state.KeyValueIterator;
 import org.apache.kafka.streams.state.KeyValueStore;
 import org.apache.kafka.streams.state.StoreBuilder;
 import org.apache.kafka.streams.state.Stores;
@@ -26,7 +27,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.config.StreamsBuilderFactoryBean;
 import org.springframework.stereotype.Component;
 
-import java.util.Iterator;
 import java.util.Properties;
 
 interface MessageBinding {
@@ -127,7 +127,7 @@ public class DemoApplication {
 		}
 
 		private void findAndFlushCandidates() {
-			Iterator<KeyValue<String, Long>> it = kvStore.all();
+			KeyValueIterator<String, Long> it = kvStore.all();
 			while(it.hasNext()) {
 				KeyValue<String, Long> entry = it.next();
 				if (entry.value >= cap) {
@@ -135,6 +135,7 @@ public class DemoApplication {
 					kvStore.delete(entry.key);
 				}
 			}
+			it.close();
 		}
 
 		@Override
