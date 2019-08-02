@@ -1,7 +1,8 @@
 Custom Kafka Streams Transformer Sample Project
 -------------------
 Reproduces a sample Spring project based on the article:
-https://medium.com/@daniyaryeralin/utilizing-kafka-streams-processor-api-and-implementing-custom-aggregation-f6a4a6c376be
+
+https://medium.com/@daniyaryeralin/utilizing-kafka-streams-processor-api-and-implementing-custom-aggregator-6cb23d00eaa7
 
 To get the code:
 -------------------
